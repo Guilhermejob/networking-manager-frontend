@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import IntentionPage from "./pages/IntentionPage";
+import { AdminProvider } from "./contexts/AdminContext";
+import { ProtectedRoute } from "./routes/ProtectedRoute";
+import { InviteProvider } from "./contexts/InviteContext";
+import InvitePage from "./pages/InvitePage";
+import { MembersProvider } from "./contexts/MembersContext";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import { MembersPage } from "./pages/admin/MembersPage";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <InviteProvider>
+        <Routes>
+          <Route path="/" element={<IntentionPage />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminProvider>
+                  <AdminDashboard />
+                </AdminProvider>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/members"
+            element={
+              <ProtectedRoute>
+                <AdminProvider>
+                  <MembersProvider>
+                    <MembersPage />
+                  </MembersProvider>
+                </AdminProvider>
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/invite" element={<InvitePage />} />
+          <Route
+            path="/member-login"
+            element={
+              <MembersProvider>
+                <MembersPage />
+              </MembersProvider>
+            }
+          />
+        </Routes>
+      </InviteProvider>
+    </BrowserRouter>
+  );
 }
-
-export default App
