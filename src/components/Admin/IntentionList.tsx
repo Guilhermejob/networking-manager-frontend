@@ -1,4 +1,3 @@
-// src/components/Admin/IntentionList.tsx
 import { useAdmin } from "../../contexts/AdminContext";
 import { IntentionCard } from "./IntentionCard";
 

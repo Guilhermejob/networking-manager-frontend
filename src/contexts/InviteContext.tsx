@@ -52,7 +52,7 @@ export function InviteProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       await api.post(`/admissions/invitations/${encodeURIComponent(token)}/complete`, form);
-      navigate("/admin/members"); // <-- redireciona após sucesso
+      navigate("/admin/members");
     } catch (err: any) {
       setError(err?.response?.data?.message ?? "Erro ao completar registro.");
     } finally {

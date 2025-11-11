@@ -1,4 +1,3 @@
-// src/components/Admin/IntentionCard.tsx
 import { useState } from "react";
 import { useAdmin } from "../../contexts/AdminContext";
 
@@ -37,7 +36,7 @@ export function IntentionCard({ id, name, email, phone, message, status }: Props
         if (inviteLink) {
             await navigator.clipboard.writeText(inviteLink);
             setCopied(true);
-            setTimeout(() => setCopied(false), 2000); // feedback temporário
+            setTimeout(() => setCopied(false), 2000);
         }
     }
     return (

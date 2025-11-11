@@ -1,4 +1,3 @@
-// src/routes/ProtectedRoute.tsx
 import { JSX } from "react";
 import { Navigate } from "react-router-dom";
 

@@ -1,4 +1,3 @@
-// src/components/MemberCard.tsx
 interface Props {
   member: {
     id: string;

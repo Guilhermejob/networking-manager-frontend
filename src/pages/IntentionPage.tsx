@@ -1,4 +1,3 @@
-// src/pages/IntentionPage.tsx
 import IntentionForm from "../components/IntentionForm";
 import { IntentionProvider } from "../contexts/IntentionContext";
 

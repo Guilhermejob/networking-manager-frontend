@@ -47,7 +47,6 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
         alert(`✅ Intenção aprovada!\n\nConvite:\n${response.data.inviteLink}`);
         console.log("Convite gerado:", response.data);
-        //await  fetchIntentions();
         return response.data; 
     }
     async function rejectIntention(id: string) {
