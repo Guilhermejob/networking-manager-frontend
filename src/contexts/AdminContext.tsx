@@ -33,7 +33,6 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         setLoading(true);
         try {
             const res = await api.get("/admissions/intentions");
-            console.log(res.data)
             setIntentions(res.data);
         } catch (err) {
             setError("Erro ao carregar intenções");
@@ -46,7 +45,6 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         const response = await api.post(`/admin/intentions/${id}/approve`);
 
         alert(`✅ Intenção aprovada!\n\nConvite:\n${response.data.inviteLink}`);
-        console.log("Convite gerado:", response.data);
         return response.data; 
     }
     async function rejectIntention(id: string) {
